@@ -1,0 +1,21 @@
+os: linux
+dist: trusty
+language: python
+services: docker
+
+env:
+  global:
+  - PDFSTUDIO_VER=12.0.0
+
+script:
+  - docker --version
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_USERPASS"
+  - 'docker build --build-arg PDFSTUDIO_VER=$PDFSTUDIO_VER
+                  --tag x11vnc/pdfstudio-desktop:latest
+                  --tag x11vnc/pdfstudio-desktop:$PDFSTUDIO_VER . &&
+     docker push x11vnc/pdfstudio-desktop &&
+     touch success'
+  # Test script without launching webbrowser and push new image if successful
+  - './pdfstudio_desktop.py -d -n -v test_project && docker stop $(docker ps -q)'
+  - './pdfstudio_desktop.py -d -n && docker stop $(docker ps -q)'
+  - docker images

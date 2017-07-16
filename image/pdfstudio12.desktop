@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=PDF Studio 12
+GenericName=PDF Studio 12
+Comment=View PDF files
+Exec=/bin/sh "/opt/pdfstudio12/pdfstudio12"
+Icon=/opt/pdfstudio12/.install4j/pdfstudio12.png
+Terminal=false
+MimeType=application/pdf;
+Categories=Viewer;Graphics;Office;
+Keywords=Viewer;Graphics;Office;

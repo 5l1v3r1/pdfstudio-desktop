@@ -10,6 +10,7 @@ USER root
 WORKDIR /tmp
 
 ARG PDFSTUDIO_VER=12.0.0
+ADD image/ /usr/share/applications/
 
 RUN /bin/bash -c 'curl -O https://download.qoppa.com/pdfstudio/v12/PDFStudio_v${PDFSTUDIO_VER//\./_}_linux64.deb && \
     dpkg -i PDFStudio_v${PDFSTUDIO_VER//\./_}_linux64.deb' && \
